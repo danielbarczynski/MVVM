@@ -24,5 +24,26 @@ namespace MVVM
         {
             InitializeComponent();
         }
+
+        private void TextBoxFirstName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateFullName();
+        }
+
+        private void TextBoxLastName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateFullName();
+        }
+
+        void UpdateFullName()
+        {
+            TextBlockFullName.Text = $"{TextBoxFirstName.Text} {TextBoxLastName.Text}";
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxFirstName.Text = "";
+            TextBoxLastName.Text = "";
+        }
     }
 }
