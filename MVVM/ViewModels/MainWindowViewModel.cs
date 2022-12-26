@@ -13,9 +13,10 @@ using System.Windows.Controls;
 
 namespace MVVM.ViewModels
 {
-
     partial class MainWindowViewModel : ObservableObject
     {
+        PersonModel personModel = new PersonModel() { Age = 39 };
+
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(FullName))]
         string firstName;
@@ -23,20 +24,22 @@ namespace MVVM.ViewModels
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(FullName))]
         string lastName;
-        public string FullName => $"{firstName} {lastName}";
 
+        BindingList<PersonModel> persons = new BindingList<PersonModel>()
+        {
+            new PersonModel { FullPersonName = "Daniel Barczyński", Age = 23} // binding to model
+        };
+
+        public int Age => personModel.Age; // binding from model and displaying in the view
+        public string FullName => $"{firstName} {lastName}";
         public int PersonsCount => persons.Count();
+
         [RelayCommand]
         public void Clear()
         {
             FirstName = "";
             LastName = "";
         }
-
-        BindingList<PersonModel> persons = new BindingList<PersonModel>()
-        {
-            new PersonModel { FullPersonName = "Daniel Barczyński"}
-        };
 
         [RelayCommand]
         public void Add()
