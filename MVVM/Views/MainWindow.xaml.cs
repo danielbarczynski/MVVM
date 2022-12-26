@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVVM.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,28 +23,8 @@ namespace MVVM
     {
         public MainWindow()
         {
+            DataContext = new MainWindowViewModel();
             InitializeComponent();
-        }
-
-        private void TextBoxFirstName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            UpdateFullName();
-        }
-
-        private void TextBoxLastName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            UpdateFullName();
-        }
-
-        void UpdateFullName()
-        {
-            TextBlockFullName.Text = $"{TextBoxFirstName.Text} {TextBoxLastName.Text}";
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            TextBoxFirstName.Text = "";
-            TextBoxLastName.Text = "";
         }
     }
 }

@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MVVM"
+        xmlns:local="clr-namespace:MVVM.ViewModels"
+        d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         mc:Ignorable="d" FontSize="22px"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -20,9 +21,9 @@
             <RowDefinition />
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="TextBoxFirstName" TextChanged="TextBoxFirstName_TextChanged" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"></TextBox>
-        <TextBox x:Name="TextBoxLastName" TextChanged="TextBoxLastName_TextChanged" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"></TextBox>
-        <TextBlock x:Name="TextBlockFullName" Grid.Column="1" Grid.Row="3"></TextBlock>
-        <Button Click="Button_Click" Grid.Column="2" Grid.Row="3">Clear</Button>
+        <TextBox x:Name="textbox" Text="{Binding FirstName}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"></TextBox>
+        <TextBox Text="{Binding LastName}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"></TextBox>
+        <TextBlock Text="{Binding FullName}" Grid.Column="1" Grid.Row="3"></TextBlock>
+        <Button Command="{Binding ClearCommand}" Grid.Column="2" Grid.Row="3">Clear</Button>
     </Grid>
 </Window>
